@@ -1,4 +1,4 @@
--- 1. 
+-- 1. Global Numbers
 
 Select SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(New_Cases)*100 as DeathPercentage
 From Test..Covid_Deaths$
@@ -10,8 +10,7 @@ order by 1,2
 
 -- 2. 
 
--- We take these out as they are not inluded in the above queries and want to stay consistent
--- European Union is part of Europe
+-- Death by Location
 
 Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
 From Test..Covid_Deaths$
@@ -35,7 +34,7 @@ group by dea.location
 
 
 
--- 3.
+-- 3. Check infection rates by location
 
 Select Location, Population, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
 From Test..Covid_Deaths$
@@ -44,7 +43,7 @@ Group by Location, Population
 order by PercentPopulationInfected desc
 
 
--- 4.
+-- 4. Infection rates by date
 
 
 Select Location, Population,date, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
