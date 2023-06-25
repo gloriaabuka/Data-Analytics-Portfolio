@@ -8,7 +8,7 @@ where continent is not null
 order by 1,2
 
 
--- 2. 
+-- 2.
 
 -- Death by Location
 
